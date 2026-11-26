@@ -27,7 +27,8 @@ export function spotsLabel(event) {
   if (isFull(event)) {
     return 'Cupo lleno';
   }
-  return `${spotsLeft(event)} lugares`;
+  const spots = spotsLeft(event);
+  return spots === 1 ? '1 lugar' : `${spots} lugares`;
 }
 
 // ---------- Precio ----------
