@@ -63,13 +63,7 @@ export function countdownLabel(dateStr, todayStr) {
 }
 
 export function sortByDate(events) {
-  return [...events].sort((a, b) =>
-    export function sortByDate(events) {
-  return [...events].sort((a, b) =>
-                          a.date.localeCompare(b.date),
-  );
-}
-  );
+  return [...events].sort((a, b) => a.date.localeCompare(b.date));
 }
 
 // ---------- Búsqueda y filtros ----------
