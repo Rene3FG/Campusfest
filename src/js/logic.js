@@ -68,9 +68,14 @@ export function sortByDate(events) {
 
 // ---------- Búsqueda y filtros ----------
 
+// Quita acentos y pasa a minúsculas para comparar texto.
+function normalize(text) {
+  return text.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+}
+
 export function matchesSearch(event, query) {
-  const text = `${event.title} ${event.venue} ${event.categoryLabel}`.toLowerCase();
-  return text.includes(query.trim().toLowerCase());
+  const text = normalize(`${event.title} ${event.venue} ${event.categoryLabel}`);
+  return text.includes(normalize(query).trim());
 }
 
 export function filterEvents(events, { query = '', category = 'todas', day = null, onlyMine = false, mine = [] } = {}) {
